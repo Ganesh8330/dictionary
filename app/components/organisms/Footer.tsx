@@ -1,5 +1,5 @@
 // components/organisms/Footer.tsx
-import { Box, Container, Divider } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import FooterText from '../atoms/FooterText';
 import theme from '@/app/theme/theme';
 

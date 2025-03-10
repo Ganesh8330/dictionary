@@ -2,14 +2,14 @@
 import { Box, Container, keyframes } from "@mui/material";
 import WelcomeContent from "../molecules/WelcomeContent";
 import AutoCompleteComponent from "./AutocompleteComponent";
-import theme from "@/app/theme/theme";
+
 
 // Define keyframes for subtle floating animations
-const float = keyframes`
-  0% { transform: translateY(0px); opacity: 0.8; }
-  50% { transform: translateY(-10px); opacity: 1; }
-  100% { transform: translateY(0px); opacity: 0.8; }
-`;
+// const float = keyframes`
+//   0% { transform: translateY(0px); opacity: 0.8; }
+//   50% { transform: translateY(-10px); opacity: 1; }
+//   100% { transform: translateY(0px); opacity: 0.8; }
+// `;
 
 // Fixed circle positions and sizes
 const circles = [
@@ -41,7 +41,7 @@ const FixedCircles = () => {
             backgroundColor:"#4044EE",
             borderRadius: "50%",
             opacity: 0.8,
-            animation: `${float} 6s ease-in-out infinite`,
+            // animation: `${float} 6s ease-in-out infinite`,
             animationDelay: circle.delay,
             filter: "blur(5px)", // Optional: Adds a soft glowing effect
           }}

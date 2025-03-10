@@ -3,7 +3,7 @@ import { tamilLetters } from "../Data/tamilLetters";
 import SearchBar from "../molecules/SearchBar";
 import SnackbarAlert from "../atoms/SnackbarAlert";
 import ResultCard from "../molecules/ResultCard";
-import { Box, Container, FormControlLabel, Grid, Radio, RadioGroup, Stack, Typography } from "@mui/material";
+import { Box, Container, FormControlLabel, Radio, RadioGroup, Stack, Typography } from "@mui/material";
 import theme from "@/app/theme/theme";
 
 interface WordData {

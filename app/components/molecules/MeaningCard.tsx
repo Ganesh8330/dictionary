@@ -1,8 +1,8 @@
 import React from "react";
-import { Box, Container, Typography, Paper, Divider } from "@mui/material";
+import { Box, Typography, Paper, Divider } from "@mui/material";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import theme from "@/app/theme/theme";
-import { frequentlySearched } from "../Data/frequentlySearched";
+
 
 // Molecule: WordCard
 interface MeaningCardProps {
