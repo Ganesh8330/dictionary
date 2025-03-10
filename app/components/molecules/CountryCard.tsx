@@ -1,6 +1,7 @@
 import React from "react";
 import { Paper, Stack, Typography, Divider } from "@mui/material";
 import theme from "@/app/theme/theme";
+import Image from "next/image";
 
 
 // Molecule: CountryCard
@@ -26,7 +27,7 @@ const CountryCard: React.FC<CountryCardProps> = ({ countryImage, language, count
        
       }}
     >
-      <img src={countryImage} width={50} alt="Country flag" />
+      <Image src={countryImage} width={50} height={50} alt="Country flag" />
       <Divider
         orientation="vertical"
         flexItem

@@ -1,18 +1,18 @@
 'use client';
 import type { Metadata } from "next";
-import { Anek_Tamil, Geist, Geist_Mono, Noto_Sans_Tamil } from "next/font/google";
+import { Anek_Tamil } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "styled-components";
 import theme from "./theme/theme";
-import { Box, Container, CssBaseline } from "@mui/material";
+import { Box, CssBaseline } from "@mui/material";
 import Navbar from "./components/organisms/Navbar";
 import Footer from "./components/organisms/Footer";
 
 
-const notoSansTamil = Noto_Sans_Tamil({
-  variable:"--font-noto-sans-tamil",
-  subsets:['latin']
-})
+// const notoSansTamil = Noto_Sans_Tamil({
+//   variable:"--font-noto-sans-tamil",
+//   subsets:['latin']
+// })
 
 const anekTamil = Anek_Tamil({
   variable: "--font-anek-tamil",
