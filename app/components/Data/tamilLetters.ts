@@ -1,6 +1,6 @@
 
 
-export function tamilLetters(unicode_value:string)
+export function tamilLetters(unicode_value:string) : string
 {
 unicode_value = unicode_value.replace(/a/g, "அ");
 unicode_value = unicode_value.replace(/A/g, "அஅ");
@@ -676,3 +676,4 @@ unicode_value = unicode_value.replace(/அஉ/g, "ஒள");
 
 return unicode_value;
 }
+

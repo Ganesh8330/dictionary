@@ -3,8 +3,7 @@ import { tamilLetters } from "../Data/tamilLetters";
 import SearchBar from "../molecules/SearchBar";
 import SnackbarAlert from "../atoms/SnackbarAlert";
 import ResultCard from "../molecules/ResultCard";
-// import WordOfTheDay from "../molecules/WordOfTheDay";
-import { Box, Container, FormControlLabel, Grid2, Radio, RadioGroup, Stack, Typography } from "@mui/material";
+import { Box, Container, FormControlLabel, Grid, Radio, RadioGroup, Stack, Typography } from "@mui/material";
 import theme from "@/app/theme/theme";
 
 interface WordData {
@@ -19,29 +18,35 @@ const AutoCompleteComponent: React.FC = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [filteredOptions, setFilteredOptions] = useState<string[]>([]);
   const [searchResult, setSearchResult] = useState<WordData[] | null>(null);
-  // const [wordOfTheDay, setWordOfTheDay] = useState<WordData | null>(null);
   const [searchCount, setSearchCount] = useState<number>(0);
   const [language, setLanguage] = useState("தமிழ்");
   const [searchedTerm, setSearchedTerm] = useState("");
+  const [allWords, setAllWords] = useState<WordData[]>([]);
 
-  console.log("search result");
+  useEffect(() => {
+    const fetchAllWords = async () => {
+      try {
+        const response = await fetch("https://67c2bed71851890165ad2322.mockapi.io/words");
+        if (!response.ok) throw new Error("Failed to fetch words");
+        const data = await response.json();
+        setAllWords(data);
+      } catch (error) {
+        console.error("Error fetching words:", error);
+      }
+    };
+    fetchAllWords();
+  }, []);
 
-  // useEffect(() => {
-  //   const fetchWordOfTheDay = async () => {
-  //     try {
-  //       const response = await fetch("https://67c2bed71851890165ad2322.mockapi.io/words");
-  //       if (!response.ok) throw new Error("Failed to fetch word of the day");
-  //       const data = await response.json();
-  //       if (data.length > 0) {
-  //         const randomWord = data[Math.floor(Math.random() * data.length)];
-  //         setWordOfTheDay(randomWord);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching word of the day:", error);
-  //     }
-  //   };
-  //   fetchWordOfTheDay();
-  // }, []);
+  useEffect(() => {
+    if (inputValue.length >= 3) {
+      const filtered = allWords
+        .filter(word => word.word.toLowerCase().includes(inputValue.toLowerCase()))
+        .map(word => word.word);
+      setFilteredOptions(filtered);
+    } else {
+      setFilteredOptions([]);
+    }
+  }, [inputValue, allWords]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -77,54 +82,47 @@ const AutoCompleteComponent: React.FC = () => {
         message="Please enter more than 3 letters"
       />
 
-    <Container>
+      <Container>
+        {searchResult && searchResult.length > 0 && (
+          <Stack direction='row' alignItems='baseline' justifyContent='space-between' pt={2}>
+            <Typography
+              variant="subtitle1"
+              sx={{ fontWeight: "bold", fontFamily: "var(--font-anek-tamil)", mt: 3 }}
+            >
+              "{searchedTerm}" - {searchCount} result{searchCount !== 1 ? "s" : ""} found
+            </Typography>
 
-      {searchResult && searchResult.length > 0 && (
-        <Stack direction='row' alignItems='baseline' justifyContent='space-between' pt={2}>
+            <RadioGroup row value={language} onChange={(e) => setLanguage(e.target.value)}>
+              <FormControlLabel value="தமிழ்" control={<Radio sx={{
+                "&.Mui-checked": {
+                  color: theme.palette.primary.main
+                }
+              }} />} label="தமிழ்" sx={{ "& .MuiFormControlLabel-label": { fontFamily: 'var(--font-anek-tamil)' } }} />
+              <FormControlLabel value="சம்ஸ்கிருதம்" control={<Radio sx={{
+                "&.Mui-checked": {
+                  color: theme.palette.primary.main
+                }
+              }} />} label="சம்ஸ்கிருதம்" sx={{ "& .MuiFormControlLabel-label": { fontFamily: 'var(--font-anek-tamil)' } }} />
+              <FormControlLabel value="பிரஞ்சு" control={<Radio sx={{
+                "&.Mui-checked": {
+                  color: theme.palette.primary.main
+                }
+              }} />} label="பிரஞ்சு" sx={{ "& .MuiFormControlLabel-label": { fontFamily: 'var(--font-anek-tamil)' } }} />
+              <FormControlLabel value="உருது" control={<Radio sx={{
+                "&.Mui-checked": {
+                  color: theme.palette.primary.main
+                }
+              }} />} label="உருது" sx={{ "& .MuiFormControlLabel-label": { fontFamily: 'var(--font-anek-tamil)' } }} />
+            </RadioGroup>
+          </Stack>
+        )}
 
-          <Typography
-            variant="subtitle1"
-            sx={{ fontWeight: "bold", fontFamily: "var(--font-anek-tamil)", mt: 3 }}
-          >
-            "{searchedTerm}" - {searchCount} result{searchCount !== 1 ? "s" : ""} found
-          </Typography>
-
-          <RadioGroup row value={language} onChange={(e) => setLanguage(e.target.value)}  >
-            <FormControlLabel value="தமிழ்" control={<Radio sx={{
-              "&.Mui-checked": {
-                color: theme.palette.primary.main
-              }
-            }} />} label="தமிழ்" sx={{ "& .MuiFormControlLabel-label": { fontFamily: 'var(--font-anek-tamil)' } }} />
-            <FormControlLabel value="சம்ஸ்கிருதம்" control={<Radio sx={{
-              "&.Mui-checked": {
-                color: theme.palette.primary.main
-              }
-            }} />} label="சம்ஸ்கிருதம்" sx={{ "& .MuiFormControlLabel-label": { fontFamily: 'var(--font-anek-tamil)' } }} />
-            <FormControlLabel value="பிரஞ்சு" control={<Radio sx={{
-              "&.Mui-checked": {
-                color: theme.palette.primary.main
-              }
-            }} />} label="பிரஞ்சு" sx={{ "& .MuiFormControlLabel-label": { fontFamily: 'var(--font-anek-tamil)' } }} />
-            <FormControlLabel value="உருது" control={<Radio sx={{
-              "&.Mui-checked": {
-                color: theme.palette.primary.main
-              }
-            }} />} label="உருது" sx={{ "& .MuiFormControlLabel-label": { fontFamily: 'var(--font-anek-tamil)' } }} />
-          </RadioGroup>
-        </Stack>
-      )}
-
-      <Box sx={{ overflowY: "auto", maxHeight: { xs: "350px", md: "500px" }, pb: 14, pt: 1, px: 4 }}>
-        {searchResult?.map((word: WordData) => (
-
-          <ResultCard key={word.id} wordData={word} />
-        ))}
-      </Box>
-
-    </Container>
-
-
-
+        <Box sx={{ overflowY: "auto", maxHeight: { xs: "350px", md: "500px" }, pb: 14, pt: 1, px: 4 }}>
+          {searchResult?.map((word: WordData) => (
+            <ResultCard key={word.id} wordData={word} />
+          ))}
+        </Box>
+      </Container>
     </>
   );
 };

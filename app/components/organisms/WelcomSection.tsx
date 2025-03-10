@@ -3,7 +3,6 @@ import { Box, Container, keyframes } from "@mui/material";
 import WelcomeContent from "../molecules/WelcomeContent";
 import AutoCompleteComponent from "./AutocompleteComponent";
 import theme from "@/app/theme/theme";
-import React from "react";
 
 // Define keyframes for subtle floating animations
 const float = keyframes`
@@ -12,70 +11,47 @@ const float = keyframes`
   100% { transform: translateY(0px); opacity: 0.8; }
 `;
 
-// Define the Tamil letter type
-interface TamilLetter {
-  left: string;
-  top: string;
-  letter: string;
-  delay: string;
-}
+// Fixed circle positions and sizes
+const circles = [
+  { left: 1400, top: 150, size: 80, delay: "0s" },
+  { left: 300, top: 500, size: 120, delay: "1s" },
+  { left: 700, top: 390, size: 100, delay: "2s" },
+  { left: 900, top: 100, size: 140, delay: "0.5s" },
+  { left: 50, top: 100, size: 90, delay: "1.5s" },
+  { left: 800, top: 600, size: 110, delay: "2.5s" },
+  { left: 400, top: 200, size: 130, delay: "3s" },
+  { left: 1300, top: 500, size: 70, delay: "0.8s" },
+  { left: 2000, top: 700, size: 150, delay: "1.2s" },
+  { left: 1000, top: 300, size: 125, delay: "2.8s" },
+];
 
-// Generate all 216 Tamil letters
-const tamilLetters: TamilLetter[] = [];
-const vowels = ["அ", "ஆ", "இ", "ஈ", "உ", "ஊ", "எ", "ஏ", "ஐ", "ஒ", "ஓ", "ஔ"];
-const consonants = ["க", "ங", "ச", "ஞ", "ட", "ண", "த", "ந", "ப", "ம", "ய", "ர", "ல", "வ", "ழ", "ள", "ற", "ன"];
-const markers = ["", "ா", "ி", "ீ", "ு", "ூ", "ெ", "ே", "ை", "ொ", "ோ", "ௌ"];
-
-let topPosition = 10;
-let leftPosition = 5;
-let delay = 0;
-
-// Populate the array with all 216 Tamil letters
-for (let i = 0; i < consonants.length; i++) {
-  for (let j = 0; j < markers.length; j++) {
-    tamilLetters.push({
-      left: `${leftPosition}%`,
-      top: `${topPosition}%`,
-      letter: consonants[i] + markers[j],
-      delay: `${delay}s`
-    });
-    leftPosition += 8;
-    delay += 0.1;
-    if (leftPosition > 90) {
-      leftPosition = 5;
-      topPosition += 10;
-    }
-  }
-}
-
-// Generates Tamil letters in a rectangular shape around the container
-const FloatingTamilLetters: React.FC = () => {
+// Generates circles as div elements with fixed positions and sizes
+const FixedCircles = () => {
   return (
     <>
-      {tamilLetters.map((item, index) => (
+      {circles.map((circle, index) => (
         <div
           key={index}
           style={{
             position: "absolute",
-            left: item.left,
-            top: item.top,
-            fontSize: "2rem",
-            fontWeight: "bold",
-            color: "#4044EE",
-            opacity: 0.5,
+            left: `${circle.left}px`,
+            top: `${circle.top}px`,
+            width: `${circle.size}px`,
+            height: `${circle.size}px`,
+            backgroundColor:"#4044EE",
+            borderRadius: "50%",
+            opacity: 0.8,
             animation: `${float} 6s ease-in-out infinite`,
-            animationDelay: item.delay,
-            filter:'blur(2px)',
+            animationDelay: circle.delay,
+            filter: "blur(5px)", // Optional: Adds a soft glowing effect
           }}
-        >
-          {item.letter}
-        </div>
+        />
       ))}
     </>
   );
 };
 
-export default function WelcomeSection(): React.ReactElement {
+export default function WelcomeSection() {
   return (
     <Box
       sx={{
@@ -83,14 +59,16 @@ export default function WelcomeSection(): React.ReactElement {
         p: { xs: 2, sm: 5, md: 8 },
         mt: 8,
         height: "100vh",
+        // bgcolor: theme.palette.secondary.light,
         overflow: "hidden",
+        // background: "rgba(160, 171, 221, 0.8)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
       }}
     >
-      {/* Floating Tamil letters */}
-      <FloatingTamilLetters />
+      {/* Fixed circles */}
+      <FixedCircles />
 
       <Container
         sx={{

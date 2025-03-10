@@ -1,7 +1,6 @@
 import React from "react";
-import { Box, Container, Paper, Stack, Typography, Divider } from "@mui/material";
+import {Paper, Stack, Typography, Divider } from "@mui/material";
 import theme from "@/app/theme/theme";
-import { categoryWords } from "../Data/catergoryData";
 import Image from "next/image";
 
 // Molecule: CategoryCard
