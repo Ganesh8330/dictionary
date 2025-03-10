@@ -1,5 +1,5 @@
 "use client";
-import { Box, Container, keyframes } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import WelcomeContent from "../molecules/WelcomeContent";
 import AutoCompleteComponent from "./AutocompleteComponent";
 

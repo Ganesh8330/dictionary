@@ -85,12 +85,12 @@ const AutoCompleteComponent: React.FC = () => {
       <Container>
         {searchResult && searchResult.length > 0 && (
           <Stack direction='row' alignItems='baseline' justifyContent='space-between' pt={2}>
-            <Typography
-              variant="subtitle1"
-              sx={{ fontWeight: "bold", fontFamily: "var(--font-anek-tamil)", mt: 3 }}
-            >
-              "{searchedTerm}" - {searchCount} result{searchCount !== 1 ? "s" : ""} found
-            </Typography>
+           <Typography
+  variant="subtitle1"
+  sx={{ fontWeight: "bold", fontFamily: "var(--font-anek-tamil)", mt: 3 }}
+>
+  <span style={{ fontWeight: "bold" }}>"{searchedTerm}"</span> - {searchCount} result{searchCount !== 1 ? "s" : ""} found
+</Typography>
 
             <RadioGroup row value={language} onChange={(e) => setLanguage(e.target.value)}>
               <FormControlLabel value="தமிழ்" control={<Radio sx={{
