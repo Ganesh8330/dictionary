@@ -1,25 +1,26 @@
-import { createTheme } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
-    common:{
-      white:'#fff',
+    common: {
+      white: "#fff",
+      black:'#33354d',
     },
     primary: {
-      main: '#000042',
-      light: '#1c1c84',
-      dark: '#000035',
-      contrastText: '#ffffff',
+      main: "#4044ee", //hover color
+      light: "#6366f1", //button color
+      dark: "#6366f1",
+      contrastText: "#ffffff",
     },
     secondary: {
-      main: '#9500ae',
-      light: '#d500f9',
-      dark: '#dd33fa',
-      contrastText: '#ffffff',
+      main: "#eff2fc", //chip
+      light: "#f3f6ff",// background
+      dark: "#0b0f19", // footer
+      contrastText: "rgba(255, 255, 255, 0.85)",// footer text
     },
   },
   typography: {
-    fontFamily: 'var(--font-anek-tamil)',
+    fontFamily: "var(--font-anek-tamil), sans-serif",
     fontSize: 14,
     fontWeightLight: 400,
     fontWeightRegular: 500,

@@ -1,10 +1,11 @@
 'use client';
 import { Box, Container, Typography } from "@mui/material";
-import AutoCompleteComponent from "../components/molecules/AutocompleteComponent.tsx";
 import ResultCounter from "../components/organisms/ResultCounter";
+import AutoCompleteComponent from "../components/organisms/AutocompleteComponent";
+import ResultSection from "../components/organisms/ResultSection";
 
 
-const options =["அகம்பாவம் ","கதிரை","அறிவு" ]
+
 
 
 export default function Result() {
@@ -19,8 +20,9 @@ export default function Result() {
                 textAlign:'center',
                 fontFamily: "var(--font-anek-tamil)",
         }}>தமிழ் பொருள் அறிக</Typography>
-            <AutoCompleteComponent options={options}/>
+            <AutoCompleteComponent/>
             <ResultCounter/>
+            <ResultSection/>
         </Box>
     )
 }

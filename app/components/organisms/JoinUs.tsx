@@ -32,17 +32,25 @@ export default function JoinUs() {
                     input: {
                         startAdornment: <InputAdornment position="start"><EmailOutlined /></InputAdornment>,
                         endAdornment: <InputAdornment position="end">
-                            <Button 
+                            <Button
                                 disableFocusRipple
-                                variant="outlined"
+
+                                type="submit"
                                 sx={{
-                                    color: theme.palette.primary.light,
+                                    color: '#fff',
                                     borderColor: theme.palette.primary.light,
-                                    transition: 'all 0.2s ease-in-out',
-                                    borderRadius:0,
-                                    '&:hover': {
-                                        background: '#ccccff',
-                                        boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
+                                    borderRadius: 0,
+                                    height: "100%",
+                                    transition: "all 0.2s ease-in-out",
+                                    position: "absolute",
+                                    right: 0,
+                                    borderBottomRightRadius: 3,
+                                    borderTopRightRadius: 3,
+                                    outline: "none",
+                                    background: theme.palette.primary.light,
+                                    "&:hover": {
+                                        background: theme.palette.primary.main,
+                                        outline: 'none',
                                     },
                                 }}>
                                 Register
@@ -53,22 +61,20 @@ export default function JoinUs() {
                 sx={{
                     width: '60%',
                     background: '#ffffff',
-                    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", 
-                    borderRadius: "8px", 
+                    borderRadius: 2,
                     transition: "all 0.3s ease-in-out",
-                    '&:hover': {
-                        boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.15)", 
-                    },
-                    '& .MuiOutlinedInput-root': {
-                        '& fieldset': {
-                            borderColor: '#E0E3E7',
-                        },
-                        '&.Mui-focused fieldset': {
-                            borderWidth: "1px",
-                            borderColor: theme.palette.primary.light,
-                            boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)", 
-                        },
-                    },
+                  "& .MuiOutlinedInput-root": {
+                "&:hover fieldset": {
+                  borderColor: "transparent", // Removes border on hover
+                },
+                "&.Mui-focused fieldset": {
+                  border: 1,
+                  borderColor: theme.palette.primary.light,
+                  boxShadow: '0px 2px 8px rgba(99, 102, 241, 0.15)'
+                },
+
+
+              },
                 }}
             />
         </Container>

@@ -5,7 +5,7 @@ import theme from '@/app/theme/theme';
 
 export default function Footer() {
   return (
-    <Box component="footer" sx={{background:theme.palette.primary.dark, p:2}}>
+    <Box component="footer" sx={{background:theme.palette.secondary.dark, p:2}}>
       <Container sx={{ textAlign: 'center' }}>
         <FooterText />
       </Container>

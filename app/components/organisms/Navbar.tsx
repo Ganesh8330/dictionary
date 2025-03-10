@@ -29,7 +29,7 @@ export default function Navbar(props: Props) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar component="nav" sx={{ background: theme.palette.common.white }}>
+      <AppBar component="nav" sx={{bgcolor:'#fff',boxShadow: 'rgba(17, 17, 26, 0.1) 0px 1px 0px'}}>
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <IconButton
             aria-label="open drawer"
